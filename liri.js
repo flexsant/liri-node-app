@@ -1,47 +1,23 @@
+// Code that reads and set any environment variables with the dotenv package
 require("dotenv").config();
-
+// Retrieves data and sends requests using the axios package to the Bands in Town, Spotify and OMDB api.
 var axios = require("axios");
-
+// Importing keys and storing it in a variable
 var keys = require("./keys.js");
-
+// Accessing data from api
 var Spotify = require('node-spotify-api');
-
+// Accessing keys information
 var spotify = new Spotify(keys.spotify);
-
-var inquirer = require("inquirer");
-
+// 
+// var inquirer = require("inquirer");
+// 
 var fs = require("fs");
-
+// variable returns an array containing command line arguments
 var action = process.argv[2];
-
+// variable that returns search parameters type, query, limit
 var search = process.argv.slice(3).join("");
 
-
-// concert-this
-
-
-// spotify-this-song
-
-
-// movie-this
-
-
-// do-what-it-says
-
-// Spotify inquirer prompt asking for user input
-// inquirer.prompt([
-
-//     {
-//         type: "input",
-//         name: "artist",
-//         message: "Choose an artist?"
-//     },
-
-
-// function for spotify
-// ])
-// .then(function (user) {
-// console.log(user);
+// function that parses the data provided by spotify api
 var runSpotify = function () {
     spotify.search({ type: 'track', query: search, limit: 1 }, function (err, data) {
         if (err) {
@@ -52,23 +28,13 @@ var runSpotify = function () {
         var preview = data.tracks.items[0].preview_url;
         var album = data.tracks.items[0].album.name;
         console.log("Artist: " , artist);
-        console.log(songName);
-        console.log(preview);
-        console.log(album);
+        console.log("Song Title: " ,songName);
+        console.log("Song Link: " ,preview);
+        console.log("Album Title: " ,album);
     });
 }
 
-
-// })
-
-// function for omdb
-
-// function bandsintown
-
-// function do what it says
-
-// main processes
-
+// If else statement that prints from action array 
 if (action === "spotify-this-song") {
     runSpotify();
 } else if (action === "concert-this") {
