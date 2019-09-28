@@ -44,14 +44,13 @@ var runBandsInTown = function () {
                 var dateTime = response.data[i].dateTime;
                 var dateArr = datetime.split('T');
 
-                var concerts = "-------------------------------" +
-                    "\nVenue Name: " + response.data[i].venue.name +
-                    "\nVenue Location: " + response.data[i].venue.name +
-                    "\nDate of the Event: " + moment(dateArr[0], "MM-DD-YYYY");
-                console.log(concerts);
+                console.log("\nVenue: " + response.data[i].venue.name + "\n");
+                console.log("\nLocation: " + response.data[i].venue.city + "\n");
+                console.log("\nEvent Date: " + moment(dateArr[0], "MM-DD-YYYY" + "\n"));
             }
-        });
+            });
 }
+
 // function that parses the data provided by OMDB API
 function runOmdb(value) {
     if (!value) {
@@ -62,20 +61,18 @@ function runOmdb(value) {
             if (err) {
                 return console.log('Error occurred: ' + err);
             }
-            var movieResults =
-                "--------------------------------------------------------------------" +
-                "\nMovie Title: " + response.data.Title +
-                "\nYear of Release: " + response.data.Year +
-                "\nIMDB Rating: " + response.data.imdbRating +
-                "\nRotten Tomatoes Rating: " + response.data.Ratings[1].Value +
-                "\nCountry Produced: " + response.data.Country +
-                "\nLanguage: " + response.data.Language +
-                "\nPlot: " + response.data.Plot +
-                "\nActors/Actresses: " + response.data.Actors;
-            console.log(movieResults);
+
+            console.log("\nMovie Title: " + response.data.Title + "\n");
+            console.log("\nYear of Release: " + response.data.Year + "\n");
+            console.log("\nIMDB Rating: " + response.data.imdbRating + "\n");
+            console.log("\nRotten Tomatoes Rating: " + response.data.Ratings[1].Value + "\n");
+            console.log("\nCountry Produced: " + response.data.Country + "\n");
+            console.log("\nLanguage: " + response.data.Language + "\n");
+            console.log("\nPlot: " + response.data.Plot + "\n");
+            console.log("\nActors/Actresses: " + response.data.Actors + "\n");
         });
 }
-
+// Takes the text inside of random.txt and then uses it to call one of LIRI's commands.
 function doThis(value) {
 
     fs.readFile("random.txt", "utf8", function (error, data) {
