@@ -4,15 +4,23 @@
 <img src="unit4gamescreenshot.png" alt="screenshot">
 
 ## Technologies Used
-- HTML - used to create elements on the DOM
+- AXIOS - 
+- Bands in Town API -
 - CSS - styles html elements on page
-- Javascript - allows dynamic interaction between user and computer data entry
-- JQuery - a javascript library that allows for simple yet more diverse and less verbos.
+- HTML - used to create elements on the DOM
 - Git - version control system to track changes to source code
 - GitHub - hosts repository that can be deployed to GitHub Pages
+- Javascript - allows dynamic interaction between user and computer data entry
+- JQuery - a javascript library that allows for simple yet more diverse and less verbos.
+- Moment - 
+- NODE.js - 
+- OMDB API - 
+- Spotify API -
+
+
 
 ## Summary
-This application allows the user to play a matching number game with a computer generated random number. The user chooses from four poisons with different values only seen once it is clicked and the corresponding number is displayed. If the user matches the computer's chosen random number then their win will be tallied. Just as if the user doesn't match the computer generated number then a loss will be tallied. Each new game win or loss with regenarate a computer generated random number and a new random value for each poison. 
+
 
 ## Code Snippet
 ``````Javascript Spotify

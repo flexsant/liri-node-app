@@ -4,20 +4,21 @@ require("dotenv").config();
 var axios = require("axios");
 // Importing keys and storing it in a variable
 var keys = require("./keys.js");
+// To utilize Node
+var moment = require('moment'); 
+moment().format();
 // Accessing data from api
 var Spotify = require('node-spotify-api');
 // Accessing keys information
 var spotify = new Spotify(keys.spotify);
-// 
-// var inquirer = require("inquirer");
-// 
+// Reads the random.txt file for do-what-it-says function
 var fs = require("fs");
-// variable returns an array containing command line arguments
+// Variable for the if else statement 
 var action = process.argv[2];
-// variable that returns search parameters type, query, limit
+// Variable sends the song, movie, and concert to their dedicated functions
 var search = process.argv.slice(3).join("");
 
-// function that parses the data provided by spotify api
+// function that parses the data provided by Spotify API
 var runSpotify = function () {
     spotify.search({ type: 'track', query: search, limit: 1 }, function (err, data) {
         if (err) {
@@ -27,10 +28,10 @@ var runSpotify = function () {
         var songName = data.tracks.items[0].name;
         var preview = data.tracks.items[0].preview_url;
         var album = data.tracks.items[0].album.name;
-        console.log("Artist: " , artist);
-        console.log("Song Title: " ,songName);
-        console.log("Song Link: " ,preview);
-        console.log("Album Title: " ,album);
+        console.log("\nArtist: " , artist + "\n");
+        console.log("Song Title: " ,songName + "\n");
+        console.log("Song Link: " ,preview + "\n");
+        console.log("Album Title: " ,album + "\n");
     });
 }
 
@@ -50,4 +51,27 @@ else if (action === "do-what-it-says") {
 else {
     console.log("Liri doesn't understand");
 }
+
+///////// Bands in Town ////////
+
+// var axios = require("axios");
+// var runbandsInTown = function () {
+//     bandsintown.search({"https://rest.bandsintown.com/artists/" + artist + "/events? }app_id=codingbootcamp"
+// console.log(runbandsInTown);
+// }
+// var runSpotify = function () {
+//     spotify.search({ type: 'track', query: search, limit: 1 }, function (err, data) {
+//         if (err) {
+//             return console.log('Error occurred: ' + err);
+//         }
+//         var artist = data.tracks.items[0].artists[0].name;
+//         var songName = data.tracks.items[0].name;
+//         var preview = data.tracks.items[0].preview_url;
+//         var album = data.tracks.items[0].album.name;
+//         console.log("\nArtist: " , artist + "\n");
+//         console.log("Song Title: " ,songName + "\n");
+//         console.log("Song Link: " ,preview + "\n");
+//         console.log("Album Title: " ,album + "\n");
+//     });
+// }
 
