@@ -24,24 +24,6 @@
 
 ## Code Snippet
 ``````Javascript Spotify
-// Code that reads and set any environment variables with the dotenv package
-require("dotenv").config();
-// Retrieves data and sends requests using the axios package to the Bands in Town, Spotify and OMDB api.
-var axios = require("axios");
-// Importing keys and storing it in a variable
-var keys = require("./keys.js");
-// Accessing data from api
-var Spotify = require('node-spotify-api');
-// Accessing keys information
-var spotify = new Spotify(keys.spotify);
-// 
-// var inquirer = require("inquirer");
-// 
-var fs = require("fs");
-// variable returns an array containing command line arguments
-var action = process.argv[2];
-// variable that returns search parameters type, query, limit
-var search = process.argv.slice(3).join("");
 
 // function that parses the data provided by spotify api
 var runSpotify = function () {

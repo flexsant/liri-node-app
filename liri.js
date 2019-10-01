@@ -32,17 +32,19 @@ var runSpotify = function () {
         console.log("Song Link: ", preview + "\n");
         console.log("Album Title: ", album + "\n");
     });
-}
+};
 // function that parses the data provided by BandsinTown API
-var runBandsInTown = function () {
-    axios.get("https://rest.bandsintown.com/artists/" + search + "/events?")
-        .then(function (response) {
+var runBandsInTown = function() {
+    console.log("concert this route this");
+    axios.get("https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp")
+        .then(function (response, err) {
             for (var i = 0; i < response.data.length; i++) {
                 if (err) {
                     return console.log('Error occurred: ' + err);
                 }
-                var dateTime = response.data[i].dateTime;
-                var dateArr = datetime.split('T');
+                var dateTime = response.data[i].datetime;
+                console.log(dateTime);
+                var dateArr = dateTime.split('T');
 
                 console.log("\nVenue: " + response.data[i].venue.name + "\n");
                 console.log("\nLocation: " + response.data[i].venue.city + "\n");
@@ -57,7 +59,7 @@ function runOmdb(value) {
         value = "mr nobody";
     }
     axios.get("https://www.omdbapi.com/?t=" + value + "&y=&plot=short&apikey=trilogy")
-        .then(function (response) {
+        .then(function (response, err) {
             if (err) {
                 return console.log('Error occurred: ' + err);
             }
@@ -80,8 +82,10 @@ function doThis(value) {
             return console.log(error);
         }
         var dataArr = data.split(',');
-        runSpotify(dataArr[0], dataArr[1]);
-    })
+        action = dataArr[0]; 
+        search = dataArr[1];
+        runSpotify();
+    });
 }
 
 // If else statement that prints from action array 
