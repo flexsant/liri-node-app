@@ -5,10 +5,10 @@ var axios = require("axios");
 // Importing keys and storing it in a variable
 var keys = require("./keys.js");
 // To utilize Node
-var moment = require('moment');
+var moment = require("moment");
 moment().format();
 // Accessing data from api
-var Spotify = require('node-spotify-api');
+var Spotify = require("node-spotify-api");
 // Accessing keys information
 var spotify = new Spotify(keys.spotify);
 // Reads the random.txt file for do-what-it-says function
@@ -19,9 +19,9 @@ var action = process.argv[2];
 var search = process.argv.slice(3).join("");
 // function that parses the data provided by Spotify API
 var runSpotify = function () {
-    spotify.search({ type: 'track', query: search, limit: 1 }, function (err, data) {
+    spotify.search({ type: "track", query: search, limit: 1 }, function (err, data) {
         if (err) {
-            return console.log('Error occurred: ' + err);
+            return console.log("Error occurred: " + err);
         }
         var artist = data.tracks.items[0].artists[0].name;
         var songName = data.tracks.items[0].name;
@@ -40,7 +40,7 @@ var runBandsInTown = function() {
         .then(function (response, err) {
             for (var i = 0; i < response.data.length; i++) {
                 if (err) {
-                    return console.log('Error occurred: ' + err);
+                    return console.log("Error occurred: " + err);
                 }
                 var dateTime = response.data[i].datetime;
                 console.log(dateTime);
